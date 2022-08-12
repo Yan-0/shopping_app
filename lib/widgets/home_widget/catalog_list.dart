@@ -9,9 +9,9 @@ class CatalogList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: CatalogModel.items.length,
+      itemCount: CatalogModel.catModel.items.length,
       itemBuilder: ((context, index) {
-        final catalog = CatalogModel.items[index];
+        final catalog = CatalogModel.catModel.items[index];
         return InkWell(
           onTap: () => Navigator.push(
             context,

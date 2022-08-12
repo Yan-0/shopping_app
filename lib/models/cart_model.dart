@@ -1,6 +1,13 @@
+import 'package:flutter_app/Screens/cart.dart';
 import 'package:flutter_app/models/catalog.dart';
 
 class CartModel {
+  static final cartModel = CartModel._internal();
+
+  CartModel._internal();
+
+  factory CartModel() => cartModel;
+
 //Category Field
   late CatalogModel _catalog;
 
@@ -33,3 +40,4 @@ class CartModel {
   void remove(Item item) {
     _itemIds.remove(item.id);
   }
+}
