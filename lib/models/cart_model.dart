@@ -11,7 +11,6 @@ class CartModel {
   CatalogModel get catalog => _catalog;
 
   set catalog(CatalogModel newCatalog) {
-    assert(newCatalog != null);
     _catalog = newCatalog;
   }
 
@@ -34,4 +33,3 @@ class CartModel {
   void remove(Item item) {
     _itemIds.remove(item.id);
   }
-}
