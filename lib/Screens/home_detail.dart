@@ -12,7 +12,9 @@ class HomeDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.cremeColor,
       bottomNavigationBar: Container(
         color: Colors.white,
@@ -28,8 +30,8 @@ class HomeDetail extends StatelessWidget {
                     MaterialStateProperty.all(MyTheme.darkbluishColor),
                 shape: MaterialStateProperty.all(StadiumBorder()),
               ),
-              child: "Buy".text.xl2.make(),
-            ).wh(100, 50),
+              child: "Add to cart".text.xl.make(),
+            ).wh(130, 50),
           ],
         ).p32(),
       ),
@@ -47,22 +49,26 @@ class HomeDetail extends StatelessWidget {
                 arcType: VxArcType.CONVEY,
                 edge: VxEdge.TOP,
                 child: Container(
-                  color: Colors.white,
-                  width: context.screenWidth,
-                  child: Column(
-                    children: [
-                      catalog.name.text.xl4
-                          .color(MyTheme.darkbluishColor)
-                          .bold
-                          .make(),
-                      catalog.desc.text
-                          .textStyle(context.captionStyle)
-                          .xl
-                          .make(),
-                      10.heightBox,
-                    ],
-                  ).py64(),
-                ),
+                    color: Colors.white,
+                    width: context.screenWidth,
+                    child: Column(
+                      children: [
+                        catalog.name.text.xl4
+                            .color(MyTheme.darkbluishColor)
+                            .bold
+                            .make(),
+                        catalog.desc.text
+                            .textStyle(context.captionStyle)
+                            .xl
+                            .make(),
+                        10.heightBox,
+                        "Dumdsjaj dsjadjsajd dsakieqrq d kqwke qwkrksad a kdsadowqkeqwr kaos kwoqeirq  asodias doqwei qiwrowq"
+                            .text
+                            .textStyle(context.captionStyle)
+                            .make()
+                            .p16(),
+                      ],
+                    ).py64()),
               ),
             )
           ],
