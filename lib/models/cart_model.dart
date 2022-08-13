@@ -1,4 +1,3 @@
-import 'package:flutter_app/Screens/cart.dart';
 import 'package:flutter_app/models/catalog.dart';
 
 class CartModel {

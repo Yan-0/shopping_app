@@ -4,7 +4,6 @@ import 'package:flutter_app/Screens/home.dart';
 import 'package:flutter_app/Screens/login.dart';
 import 'package:flutter_app/utils/routes.dart';
 import 'package:flutter_app/widgets/themes.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
