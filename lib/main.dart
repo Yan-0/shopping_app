@@ -8,8 +8,10 @@ import 'package:flutter_app/models/catalog.dart';
 import 'package:flutter_app/utils/routes.dart';
 import 'package:flutter_app/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
+  setPathUrlStrategy();
   runApp(
     VxState(store: MyStore(CatalogModel(), CartModel()), child: MyApp()),
   );
