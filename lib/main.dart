@@ -9,8 +9,13 @@ import 'package:flutter_app/utils/routes.dart';
 import 'package:flutter_app/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_app/Screens/bottom_bar.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   setPathUrlStrategy();
   runApp(
     VxState(store: MyStore(CatalogModel(), CartModel()), child: MyApp()),
@@ -25,12 +30,12 @@ class MyApp extends StatelessWidget {
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.homeRoute,
+      initialRoute: MyRoutes.mainRoute,
       routes: {
-        "/": (context) => Login(),
         MyRoutes.homeRoute: (context) => Home(),
         MyRoutes.loginRoute: (context) => Login(),
         MyRoutes.cartRoute: (context) => Cart(),
+        MyRoutes.mainRoute: (context) => BottomBar(),
       },
     );
   }

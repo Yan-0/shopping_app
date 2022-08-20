@@ -20,7 +20,7 @@ class _LoginState extends State<Login> {
     });
 
     await Future.delayed(Duration(seconds: 1));
-    await Navigator.pushNamed(context, MyRoutes.homeRoute);
+    await Navigator.pushNamed(context, MyRoutes.mainRoute);
     setState(() {
       changeButton = false;
     });
@@ -41,7 +41,7 @@ class _LoginState extends State<Login> {
                 fit: BoxFit.cover,
               ),
               SizedBox(
-                height: 20.0,
+                height: 50.0,
               ),
               Text(
                 "Welcome $name",
