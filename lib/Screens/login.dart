@@ -1,6 +1,11 @@
+import 'dart:ffi';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:fluentui_icons/fluentui_icons.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -8,7 +13,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  String name = "";
   bool changeButton = false;
 
   final _formKey = GlobalKey<FormState>();
@@ -27,6 +31,8 @@ class _LoginState extends State<Login> {
     // }
   }
 
+  List<bool> _selections = List.generate(1, (index) => false);
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -36,20 +42,16 @@ class _LoginState extends State<Login> {
           key: _formKey,
           child: Column(
             children: [
-              Image.asset(
-                "assets/images/login_image.png",
-                fit: BoxFit.cover,
-              ),
               SizedBox(
-                height: 50.0,
+                height: 120,
               ),
-              Text(
-                "Welcome $name",
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              "LOGIN"
+                  .text
+                  .textStyle(TextStyle(
+                    fontFamily: GoogleFonts.secularOne().fontFamily,
+                  ))
+                  .xl5
+                  .make(),
               SizedBox(
                 height: 20.0,
               ),
@@ -62,6 +64,7 @@ class _LoginState extends State<Login> {
                       decoration: InputDecoration(
                         hintText: "Enter username",
                         labelText: "Username",
+                        icon: Icon(CupertinoIcons.person),
                       ),
                       // validator: (value) {
                       //   if (value.isEmpty) {
@@ -69,16 +72,13 @@ class _LoginState extends State<Login> {
                       //   }
                       //   return null;
                       // },
-                      onChanged: (value) {
-                        name = value;
-                        setState(() {});
-                      },
                     ),
                     TextFormField(
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: "Enter password",
                         labelText: "Password",
+                        icon: Icon(CupertinoIcons.padlock),
                       ),
                       // validator: (value) {
                       //   if (value.isEmpty) {
@@ -91,8 +91,29 @@ class _LoginState extends State<Login> {
                       // },
                     ),
                     SizedBox(
-                      height: 40.0,
-                    ),
+                        height: 80.0,
+                        child: Row(
+                          children: [
+                            ToggleButtons(
+                              children: <Widget>[Icon(Icons.done)],
+                              isSelected: _selections,
+                              onPressed: (int index) {
+                                setState(() {
+                                  _selections[index] = !_selections[index];
+                                  if (index == 0 && _selections[index]) {
+                                  } else if (index == 0 &&
+                                      !_selections[index]) {}
+                                });
+                              },
+                              color: context.theme.canvasColor,
+                              fillColor: context.primaryColor,
+                              selectedColor: Colors.white,
+                              constraints:
+                                  BoxConstraints(maxHeight: 30, maxWidth: 30),
+                            ),
+                            "Remember me".text.make().pOnly(left: 2, top: 2),
+                          ],
+                        )),
                     Material(
                       color: context.theme.buttonColor,
                       borderRadius:
@@ -100,26 +121,36 @@ class _LoginState extends State<Login> {
                       child: InkWell(
                         onTap: () => moveToHome(context),
                         child: AnimatedContainer(
-                          duration: Duration(seconds: 1),
-                          width: changeButton ? 50 : 150,
-                          height: 50,
-                          alignment: Alignment.center,
-                          child: changeButton
-                              ? Icon(
-                                  Icons.done,
-                                  color: Colors.white,
-                                )
-                              : Text(
-                                  "Login",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                            duration: Duration(seconds: 1),
+                            width: changeButton ? 50 : 150,
+                            height: 50,
+                            alignment: Alignment.center,
+                            child: changeButton
+                                ? Icon(
+                                    Icons.done,
                                     color: Colors.white,
-                                  ),
-                                ),
-                        ),
+                                  )
+                                : Icon(
+                                    CupertinoIcons.arrow_right,
+                                    color: context.cardColor,
+                                  )),
                       ),
                     ),
+                    // Column(
+                    //   children: [
+                    //     Container(
+                    //       child: "Google Signin".text.make(),
+                    //     ).pOnly(top: 64, bottom: 32),
+                    //     Container(
+                    //       child: "Facebook Signin".text.make(),
+                    //     ).p32(),
+                    //     Container(
+                    //             child: "Don't have an account? {Create Account}"
+                    //                 .text
+                    //                 .make())
+                    //         .p32()
+                    //   ],
+                    // )
                   ],
                 ),
               ),
