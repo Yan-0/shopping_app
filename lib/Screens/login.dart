@@ -1,11 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:fluentui_icons/fluentui_icons.dart';
+import '../widgets/signin.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -43,7 +41,7 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               SizedBox(
-                height: 120,
+                height: 80,
               ),
               "LOGIN"
                   .text
@@ -95,7 +93,12 @@ class _LoginState extends State<Login> {
                         child: Row(
                           children: [
                             ToggleButtons(
-                              children: <Widget>[Icon(Icons.done)],
+                              children: <Widget>[
+                                Icon(
+                                  Icons.done,
+                                  size: 18,
+                                )
+                              ],
                               isSelected: _selections,
                               onPressed: (int index) {
                                 setState(() {
@@ -108,8 +111,9 @@ class _LoginState extends State<Login> {
                               color: context.theme.canvasColor,
                               fillColor: context.primaryColor,
                               selectedColor: Colors.white,
+                              borderColor: Colors.teal,
                               constraints:
-                                  BoxConstraints(maxHeight: 30, maxWidth: 30),
+                                  BoxConstraints(maxHeight: 18, maxWidth: 18),
                             ),
                             "Remember me".text.make().pOnly(left: 2, top: 2),
                           ],
@@ -136,21 +140,7 @@ class _LoginState extends State<Login> {
                                   )),
                       ),
                     ),
-                    // Column(
-                    //   children: [
-                    //     Container(
-                    //       child: "Google Signin".text.make(),
-                    //     ).pOnly(top: 64, bottom: 32),
-                    //     Container(
-                    //       child: "Facebook Signin".text.make(),
-                    //     ).p32(),
-                    //     Container(
-                    //             child: "Don't have an account? {Create Account}"
-                    //                 .text
-                    //                 .make())
-                    //         .p32()
-                    //   ],
-                    // )
+                    SignIn().pOnly(top: 30),
                   ],
                 ),
               ),
