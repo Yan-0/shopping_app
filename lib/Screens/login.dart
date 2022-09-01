@@ -16,17 +16,17 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
 
   moveToHome(BuildContext context) async {
-    // if (_formKey.currentState.validate()) {
-    setState(() {
-      changeButton = true;
-    });
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        changeButton = true;
+      });
 
-    await Future.delayed(Duration(seconds: 1));
-    await Navigator.pushNamed(context, MyRoutes.mainRoute);
-    setState(() {
-      changeButton = false;
-    });
-    // }
+      await Future.delayed(Duration(seconds: 1));
+      await Navigator.pushNamed(context, MyRoutes.mainRoute);
+      setState(() {
+        changeButton = false;
+      });
+    }
   }
 
   List<bool> _selections = List.generate(1, (index) => false);
@@ -64,12 +64,12 @@ class _LoginState extends State<Login> {
                         labelText: "Username",
                         icon: Icon(CupertinoIcons.person),
                       ),
-                      // validator: (value) {
-                      //   if (value.isEmpty) {
-                      //     return "Username cannot be empty";
-                      //   }
-                      //   return null;
-                      // },
+                      validator: (value) {
+                        if (value.isEmptyOrNull) {
+                          return "Username cannot be empty";
+                        }
+                        return null;
+                      },
                     ),
                     TextFormField(
                       obscureText: true,
@@ -78,15 +78,15 @@ class _LoginState extends State<Login> {
                         labelText: "Password",
                         icon: Icon(CupertinoIcons.padlock),
                       ),
-                      // validator: (value) {
-                      //   if (value.isEmpty) {
-                      //     return "Password cannot be empty";
-                      //   } else if (value.length < 8) {
-                      //     return "Password length should be at least 8 characters";
-                      //   }
+                      validator: (value) {
+                        if (value.isEmptyOrNull) {
+                          return "Password cannot be empty";
+                        } else if (value!.length < 8) {
+                          return "Password length should be at least 8 characters";
+                        }
 
-                      //   return null;
-                      // },
+                        return null;
+                      },
                     ),
                     SizedBox(
                         height: 80.0,
