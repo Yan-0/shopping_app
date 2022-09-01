@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_app/core/store.dart';
-import 'package:flutter_app/Screens/bottom_bar.dart';
 import 'package:flutter_app/models/cart_model.dart';
 import 'dart:convert';
 import 'package:flutter_app/models/catalog.dart';
@@ -18,7 +16,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final url = "https://api.jsonbin.io/b/604dbddb683e7e079c4eefd3";
+  final url = "https://api.jsonbin.io/v3/b/630f962ce13e6063dc942bb5";
 
   @override
   void initState() {
@@ -27,13 +25,15 @@ class _HomeState extends State<Home> {
   }
 
   loadData() async {
-    final catalogJson =
-        await rootBundle.loadString("assets/files/catalog.json");
+    // await Future.delayed(Duration(seconds: 2));
+    // final catalogJson =
+    //     await rootBundle.loadString("assets/files/catalog.json");
 
-    // final response = await http.get(Uri.parse(url));
-    // final catalogJson = response.body;
+    final response = await http.get(Uri.parse(url));
+    final catalogJson = response.body;
     final decodedData = jsonDecode(catalogJson);
-    var productsData = decodedData["products"];
+    var recordData = decodedData["record"];
+    var productsData = recordData["products"];
     CatalogModel.items = List.from(productsData)
         .map<Item>((item) => Item.fromMap(item))
         .toList();

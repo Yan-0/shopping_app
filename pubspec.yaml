@@ -55,6 +55,7 @@ dev_dependencies:
   cloud_firestore: ^3.4.5
   flutterfire_cli: ^0.2.4
   sign_button: ^2.0.2
+  firebase_remote_config: ^2.0.16
 
 
 # For information on the generic Dart part of this file, see the
