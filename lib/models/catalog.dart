@@ -15,6 +15,7 @@ class Item {
   final int id;
   final String name;
   final String desc;
+  final String fulldesc;
   final num price;
   final String color;
   final String image;
@@ -23,6 +24,7 @@ class Item {
       {required this.id,
       required this.name,
       required this.desc,
+      required this.fulldesc,
       required this.price,
       required this.color,
       required this.image});
@@ -32,6 +34,7 @@ class Item {
       id: map["id"],
       name: map["name"],
       desc: map["desc"],
+      fulldesc: map["fulldesc"],
       price: map["price"],
       color: map["color"],
       image: map["image"],
@@ -42,6 +45,7 @@ class Item {
         "id": id,
         "name": name,
         "desc": desc,
+        "fulldesc": fulldesc,
         "price": price,
         "color": color,
         "image": image,

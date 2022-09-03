@@ -63,6 +63,9 @@ class _LoginState extends State<Login> {
                         hintText: "Enter username",
                         labelText: "Username",
                         icon: Icon(CupertinoIcons.person),
+                        errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.red, width: 1)),
                       ),
                       validator: (value) {
                         if (value.isEmptyOrNull) {
@@ -70,13 +73,16 @@ class _LoginState extends State<Login> {
                         }
                         return null;
                       },
-                    ),
+                    ).pOnly(bottom: 10),
                     TextFormField(
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: "Enter password",
                         labelText: "Password",
                         icon: Icon(CupertinoIcons.padlock),
+                        errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.red, width: 1)),
                       ),
                       validator: (value) {
                         if (value.isEmptyOrNull) {

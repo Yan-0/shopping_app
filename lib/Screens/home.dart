@@ -51,6 +51,7 @@ class _HomeState extends State<Home> {
           builder: ((context, store, status) => FloatingActionButton(
                 onPressed: () =>
                     Navigator.pushNamed(context, MyRoutes.cartRoute),
+                shape: CircleBorder(),
                 backgroundColor: context.theme.buttonColor,
                 child: Icon(
                   CupertinoIcons.cart,

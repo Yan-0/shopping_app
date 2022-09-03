@@ -1,7 +1,10 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/core/store.dart';
 import 'package:flutter_app/models/cart_model.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'home_detail.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pay/pay.dart';
 
@@ -96,10 +99,10 @@ class _CartList extends StatelessWidget {
         : ListView.builder(
             itemCount: _cart.items.length,
             itemBuilder: (context, index) => ListTile(
-              leading: Icon(Icons.done),
+              leading: Icon(CupertinoIcons.bag),
               trailing: IconButton(
                 onPressed: () => RemoveMutation(_cart.items[index]),
-                icon: Icon(Icons.remove_circle_outline),
+                icon: Icon(Icons.remove_circle_outlined),
               ),
               title: _cart.items[index].name.text.make(),
             ),
