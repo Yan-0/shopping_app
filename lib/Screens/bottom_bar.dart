@@ -14,48 +14,45 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _selectedIndex = 0;
+  int _currentIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     Home(),
     Search(),
     Login()
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _widgetOptions[_selectedIndex],
+        child: _widgetOptions[_currentIndex],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedItemColor: Colors.deepPurple,
-        elevation: 10,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        unselectedItemColor: Color(0XFF526480),
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
-              label: "Home",
-              activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled)),
-          BottomNavigationBarItem(
-              icon: Icon(FluentSystemIcons.ic_fluent_search_regular),
-              label: "Search",
-              activeIcon: Icon(FluentSystemIcons.ic_fluent_search_filled)),
-          BottomNavigationBarItem(
-              icon: Icon(FluentSystemIcons.ic_fluent_person_accounts_regular),
-              label: "Log In",
-              activeIcon:
-                  Icon(FluentSystemIcons.ic_fluent_person_accounts_filled)),
+      bottomNavigationBar: NavigationBar(
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+        selectedIndex: _currentIndex,
+        onDestinationSelected: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        elevation: 8,
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
+            label: "Home",
+            selectedIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
+          ),
+          NavigationDestination(
+            icon: Icon(FluentSystemIcons.ic_fluent_search_regular),
+            label: "Search",
+            selectedIcon: Icon(FluentSystemIcons.ic_fluent_search_filled),
+          ),
+          NavigationDestination(
+            icon: Icon(FluentSystemIcons.ic_fluent_person_accounts_regular),
+            label: "Log In",
+            selectedIcon:
+                Icon(FluentSystemIcons.ic_fluent_person_accounts_filled),
+          ),
         ],
       ),
     );
