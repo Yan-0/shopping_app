@@ -49,8 +49,9 @@ class SignIn extends StatelessWidget {
                 "Don't have an account?".text.make(),
                 TextButton(
                   onPressed: () {},
+                  style:
+                      const ButtonStyle(splashFactory: NoSplash.splashFactory),
                   child: "Create account".text.make(),
-                  style: ButtonStyle(splashFactory: NoSplash.splashFactory),
                 ),
               ],
             ),
